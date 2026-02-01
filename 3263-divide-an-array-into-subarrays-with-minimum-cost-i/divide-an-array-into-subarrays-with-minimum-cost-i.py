@@ -1,6 +1,6 @@
 class Solution:
     def minimumCost(self, nums: List[int]) -> int:
-        ptr1 = nums[0]
-        n = sorted(nums[1:])
-        print(n)
-        return ptr1+n[0]+n[1]
+        first = nums[0]
+        rest = nums[1:]
+        rest.sort()
+        return first + rest[0] + rest[1]
