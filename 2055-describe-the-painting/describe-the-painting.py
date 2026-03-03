@@ -1,6 +1,6 @@
 class Solution:
     def splitPainting(self, segments: List[List[int]]) -> List[List[int]]:
-        events = dict()
+        events = dict()     # Dict helps add values with same start
 
         for start, end, color in segments:
             if start not in events:
@@ -12,13 +12,13 @@ class Solution:
             else:
                 events[end] += -1*color
 
-        events = sorted(events.items())
+        events = sorted(events.items())    # Sorted gives a tuple. convert type if dict required
 
         colors_array = []
         cumSum = 0
         for i in range(len(events)-1):
             cumSum += events[i][1]
             if cumSum == 0:
-                continue
+                continue           ## IMPORTANT: Handle 0 [Gap that has no color]
             colors_array.append([events[i][0], events[i+1][0], cumSum])
         return colors_array
