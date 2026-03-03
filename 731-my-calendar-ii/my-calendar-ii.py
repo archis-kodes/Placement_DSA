@@ -4,18 +4,18 @@ class MyCalendarTwo:
         self.events = []
 
     def book(self, startTime: int, endTime: int) -> bool:
-        events = self.events.copy()  # Shallow Copy Problem
-        events.append((startTime, 1))
-        events.append((endTime, -1))
+        self.events.append((startTime, 1))
+        self.events.append((endTime, -1))
 
-        events.sort()
+        self.events.sort()
 
         bookings = 0
-        for currentTime, booking in events:
+        for currentTime, booking in self.events:
             bookings += booking
             if bookings>2:
+                self.events.remove((startTime, 1))
+                self.events.remove((endTime, -1))
                 return False
-        self.events = events.copy()
         return True
 
 
