@@ -20,7 +20,7 @@ class Solution:
                 elif grid[i][j] == 2:
                     rotten.append([i, j])
 
-        if fresh==0:
+        if fresh==0:                                   # When no updation is needed
             return 0
 
         duration = 0
