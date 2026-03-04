@@ -1,17 +1,9 @@
 class Solution:
     def numSpecial(self, mat: List[List[int]]) -> int:
         def isSpecial (matrix, row, col):
-            for i in range(len(matrix)):
-                if i==row:
-                    continue
-                if matrix[i][col] == 1:
-                    return False
-            for j in range(len(matrix[0])):
-                if j==col:
-                    continue
-                if matrix[row][j] == 1:
-                    return False
-            return True
+            rowSum = sum(matrix[row])
+            colSum = sum(r[col] for r in matrix)
+            return rowSum==1 and colSum==1
         
         count = 0
         for i in range(len(mat)):
