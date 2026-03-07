@@ -1,7 +1,7 @@
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
         loser_count = dict()
-        winner_count = dict()
+        winner_count = set()
         total_matches = len(matches)
         for winner, loser in matches:
             if loser not in loser_count:
@@ -9,7 +9,7 @@ class Solution:
             else:
                 loser_count[loser] +=1
             if winner not in winner_count:
-                winner_count[winner] = 1
+                winner_count.add(winner)
 
         winners1 = []
         winners2 = []
