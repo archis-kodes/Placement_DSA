@@ -1,7 +1,10 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for left in range(len(nums)-1):
-            req = target - nums[left]
-            for right in range(left+1, len(nums)):
-                if nums[right] == req:
-                    return [left, right]
+        memory = dict()
+        for i in range(len(nums)):
+            more = target - nums[i]
+            if more in memory:
+                return (memory[more], i)
+            else:
+                memory[nums[i]] = i
+        return -1
