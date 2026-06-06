@@ -1,6 +1,6 @@
 class Solution:
     def minEnergy(self, n: int, brightness: int, intervals: list[list[int]]) -> int:
-        number_of_bulbs = max(brightness//3, (brightness+1)//3, (brightness+2)//3)  # Ceil Value
+        number_of_bulbs = (brightness+2)//3  # Ceil Value
 
         # Create Memory
         memory = []
@@ -18,7 +18,5 @@ class Solution:
                 count += (i[0] - prev)
             prev = i[0]
             prevStatus += i[1]
-
-
-            
+        
         return count * number_of_bulbs
