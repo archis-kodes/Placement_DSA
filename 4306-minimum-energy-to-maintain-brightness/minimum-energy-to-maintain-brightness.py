@@ -1,22 +1,22 @@
 class Solution:
     def minEnergy(self, n: int, brightness: int, intervals: list[list[int]]) -> int:
-        number_of_bulbs = (brightness+2)//3  # Ceil Value
-
-        # Create Memory
+        # Find Minimum BULB
+        minimum_bulb = (brightness+2)//3
+        
+        # Line Sweep
         memory = []
         for interval in intervals:
             memory.append((interval[0], 1))
-            memory.append((interval[1]+1, -1))
+            memory.append((interval[1] +1 , -1))
+
         memory.sort()
 
-        # Create the time chart
-        prev = 0
+        prevPlace = 0
         prevStatus = 0
-        count = 0
+        total = 0
         for i in memory:
-            if prevStatus !=0:
-                count += (i[0] - prev)
-            prev = i[0]
+            if prevStatus!=0:
+                total += i[0] - prevPlace
+            prevPlace = i[0]
             prevStatus += i[1]
-        
-        return count * number_of_bulbs
+        return total*minimum_bulb
