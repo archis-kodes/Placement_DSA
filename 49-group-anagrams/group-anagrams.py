@@ -1,14 +1,13 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        memory = {}
+        memory = dict()
         for i in strs:
-            idx = "".join(sorted(i))
-            if idx not in memory:
-                memory[idx] = [i]
+            sorted_i = "".join(sorted(i))
+            if sorted_i not in memory:
+                memory[sorted_i] = [i]
             else:
-                memory[idx].append(i)
-        
+                memory[sorted_i].append(i)
         result = []
-        for key, value in memory.items():
-            result.append(value)
+        for key, values in memory.items():
+            result.append(values)
         return result
